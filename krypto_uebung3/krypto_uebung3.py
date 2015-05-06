@@ -1,4 +1,4 @@
-# Martin Heinrich 
+# Martin Heinrich 113260
 # Daniel Wittmann 113017
 #
 # Python-Version 3.4.3
@@ -31,16 +31,13 @@ def create_sbox (string) :
     string.split('\n')
     x = 2** int(string[0])
 
-    sbox = [[0 for i in range(x)]for j in range(2)]
-
-    for i in range(x):
-        sbox [i][0] = i
+    sbox = [x]
 
     temp_list = string[4]
     temp_list.split(',')
 
     for i in range(0,len(temp_list),2):
-        sbox[0][i] = int(temp_list[i],16)
+        sbox[i] = int(temp_list[i],16)
 
     return sbox
 #***************************************************************************
@@ -50,3 +47,11 @@ def create_sbox (string) :
 sbox = create_sbox(sbox_data)
 print(sbox)
 
+
+
+#TODO***********************************************************************
+#
+# Ausgabe der Matrix sxhreiben
+# Martix mit hilfe der Sbox füllen
+#
+# dann fertig
