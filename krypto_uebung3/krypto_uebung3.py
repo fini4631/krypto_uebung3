@@ -4,7 +4,7 @@
 # Python-Version 3.4.3
 
 #***************************************************************************
-# Python-Script zur Lösung der Aufgabe 5 auf den 3. Übungsblatt. Es wird 
+# Python-Script zur Loesung der Aufgabe 5 auf den 3. Uebungsblatt. Es wird 
 # eine Differential Distribution Table, einer gegebenen S-Box erstellt. Die 
 #S-box wird als .txt - Datei als Kommandozeilen Parameter entgegen genommen.
 #***************************************************************************
@@ -21,26 +21,28 @@ def create_matrix (string) :
     y = 2** int(string[0])
     matrix = [[0 for i in range(x)] for j in range(y)]
 
+    print(matrix)
     return matrix
 #***************************************************************************
 
 #***************************************************************************
 # Erstellt die Sbox in form einer zwei-dimensionalen Liste. Erste Spalte, 
-# enthält den Sbox-Input, die zweite Spalte den Sbox-Output.
+# enthaelt den Sbox-Input, die zweite Spalte den Sbox-Output.
 def create_sbox (string) :
     string.split('\n')
     x = 2** int(string[0])
 
     sbox = [[0 for i in range(x)]for j in range(2)]
-
+    
     for i in range(x):
-        sbox [i][0] = i
+        sbox [0][i] = i
 
-    temp_list = string[4]
-    temp_list.split(',')
+    temp_list = string[4:len(string)]
 
-    for i in range(0,len(temp_list),2):
-        sbox[0][i] = int(temp_list[i],16)
+    temp_list=temp_list.split(",")
+    
+    for i in range(x):
+        sbox[1][i] = int(temp_list[i],16)
 
     return sbox
 #***************************************************************************
