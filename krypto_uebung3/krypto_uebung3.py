@@ -31,27 +31,35 @@ def create_sbox (string) :
     string.split('\n')
     x = 2** int(string[0])
 
-    sbox = [x]
+    sbox = [0 for i in range(x)]
+    j = 0
 
-    temp_list = string[4]
-    temp_list.split(',')
-
-    for i in range(0,len(temp_list),2):
-        sbox[i] = int(temp_list[i],16)
-
+    for i in range(4,len(string),2) :
+        sbox[j] = int(string[i],16)
+        j+=1
+    
     return sbox
 #***************************************************************************
 
 #def print_matrix(matrix) :
     
-sbox = create_sbox(sbox_data)
-print(sbox)
 
+
+#***************************************************************************
+def DDT(matrix, sbox) :
+    for i in range(len(sbox)) :
+        for j in range(len(sbox)) :
+            matrix[(sbox[i] ^ sbox[j])][(j ^ i)] += 1
+
+#create_sbox(sbox_data)
+#print(create_matrix(sbox_data))
+#print(create_sbox(sbox_data))
+print(DDT(create_matrix(sbox_data),create_sbox(sbox_data)))
 
 
 #TODO***********************************************************************
 #
-# Ausgabe der Matrix sxhreiben
+# Ausgabe der Matrix schreiben
 # Martix mit hilfe der Sbox füllen
 #
 # dann fertig
