@@ -48,9 +48,16 @@ def create_sbox (string) :
 
 #***************************************************************************
 def DDT(matrix, sbox) :
+    # print(matrix, len(sbox), sbox)
+    # print(len(matrix[0]))
     for i in range(len(sbox)) :
         for j in range(len(sbox)) :
-            matrix[(sbox[i] ^ sbox[j])][(j ^ i)] += 1
+            # print((sbox[i] ^ sbox[j]),(j ^ i))
+            # print(i,j,sbox[i], sbox[j])
+            matrix[ (j ^ i) % len(matrix) ][(sbox[i] ^ sbox[j]) % len(matrix[0])] += 1
+            # print(matrix)
+    return matrix
+
 
 #create_sbox(sbox_data)
 #print(create_matrix(sbox_data))
