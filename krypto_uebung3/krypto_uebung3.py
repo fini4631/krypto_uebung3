@@ -60,6 +60,22 @@ def create_sbox (string) :
 
 #def print_matrix(matrix) :
     
-sbox = create_sbox(sbox_data)
-print(sbox)
+#***************************************************************************
+def DDT(matrix, sbox) :
+    print(matrix, len(sbox), sbox)
+    for i in range(len(sbox)) :
+        for j in range(len(sbox)) :
+            matrix[(sbox[i] ^ sbox[j])][(j ^ i)] += 1
 
+#create_sbox(sbox_data)
+#print(create_matrix(sbox_data))
+#print(create_sbox(sbox_data))
+print(DDT(create_matrix(sbox_data),create_sbox(sbox_data)))
+
+
+#TODO***********************************************************************
+#
+# Ausgabe der Matrix schreiben
+# Martix mit hilfe der Sbox füllen
+#
+# dann fertig
