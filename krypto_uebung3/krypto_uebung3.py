@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*- 
 # Martin Heinrich 113260
 # Daniel Wittmann 113017
 #
