@@ -11,8 +11,19 @@
 #***************************************************************************
 
 import sys
-#sbox_data = open(sys.argv[1], 'r').read()
-sbox_data = open('s_box.txt', 'r').read() 
+
+if __name__ == '__main__':
+    if (len(sys.argv)==2):
+        try:
+            sbox_data = open(sys.argv[1], 'r').read()
+        except IOError:
+            print("Exeption: File dosnt exist.")
+            exit()   
+    else :
+        print("Computes the difference distribution table for a given s-box.\nusage: "+sys.argv[0]+" <sbox path>\n\t- <sbox path>: Path to a given S-box difinition")
+        exit()
+else :
+    sbox_data = open('s_box.txt', 'r').read() 
 
 #***************************************************************************
 # Initialisiert eine Matrix, in welcher die Werte der DDT eingetragen werde.
