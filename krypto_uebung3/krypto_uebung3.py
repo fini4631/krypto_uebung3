@@ -27,10 +27,12 @@ def toBinary(n,length):
 def create_matrix (string) :
     string.split('\n')
     x = 2** int(string[2])
+    #print(x,string[2])
     y = 2** int(string[0])
+    #print(y,string[0])
     matrix = [[0 for i in range(x)] for j in range(y)]
 
-    print(matrix)
+    #print(matrix)
     return matrix
 #***************************************************************************
 
@@ -46,14 +48,14 @@ def create_sbox (string) :
     c = int(string[2])
 
     for i in range(x):
-        sbox [0][i] = toBinary(i,b)
+        sbox [0][i] = i
 
     temp_list = string[4:len(string)]
 
     temp_list=temp_list.split(",")
     
     for i in range(x):
-        sbox[1][i] = toBinary(int(temp_list[i],16),c)
+        sbox[1][i] = int(temp_list[i],16)
 
     return sbox
 #***************************************************************************
@@ -62,10 +64,15 @@ def create_sbox (string) :
     
 #***************************************************************************
 def DDT(matrix, sbox) :
-    print(matrix, len(sbox), sbox)
+
     for i in range(len(sbox)) :
         for j in range(len(sbox)) :
-            matrix[(sbox[i] ^ sbox[j])][(j ^ i)] += 1
+            print(i,j,sbox[1][i],sbox[1][j]) 
+            value_i = (int(sbox[1][i]) ^ int(sbox[1][j]))
+            value_j = (j ^ i)
+            print(value_i,value_j)
+            matrix[value_i][value_j] += 1
+            print(matrix)
 
 #create_sbox(sbox_data)
 #print(create_matrix(sbox_data))
