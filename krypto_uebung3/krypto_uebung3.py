@@ -23,7 +23,11 @@ if __name__ == '__main__':
         print("Computes the difference distribution table for a given s-box.\nusage: "+sys.argv[0]+" <sbox path>\n\t- <sbox path>: Path to a given S-box difinition")
         exit()
 else :
-    sbox_data = open('s_box.txt', 'r').read() 
+    try:
+        sbox_data = open('s_box.txt', 'r').read() 
+    except IOError:
+        print("Exeption: File dosnt exist.")
+        exit()
 
 #***************************************************************************
 # Initialisiert eine Matrix, in welcher die Werte der DDT eingetragen werde.
