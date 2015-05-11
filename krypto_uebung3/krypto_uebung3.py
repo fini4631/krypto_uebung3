@@ -41,8 +41,8 @@ def create_matrix (string) :
 #***************************************************************************
 
 #***************************************************************************
-# Erstellt die Sbox in form einer zwei-dimensionalen Liste. Erste Spalte, 
-# enthält den Sbox-Input, die zweite Spalte den Sbox-Output.
+# Erstellt die Sbox in form einer Liste. Der Inize ist gleich den Sbox Input,
+# das dzugehörige Element ist gleich den jeweiligen Sbox Output
 def create_sbox (string) :
     string.split('\n')
     x = 2** int(string[0])
@@ -57,24 +57,26 @@ def create_sbox (string) :
     return sbox
 #***************************************************************************
 
-#def print_matrix(matrix) :
-    
 
 
 #***************************************************************************
+# Erstellt mit hilfe der Matrix und der Sbox die Verteilungstabelle 
 def DDT(matrix, sbox) :
 
     for i in range(len(sbox)) :
         for j in range(len(sbox)) :
-            # print((sbox[i] ^ sbox[j]),(j ^ i))
-            # print(i,j,sbox[i], sbox[j])
+           
             matrix[ (j ^ i) % len(matrix) ][(sbox[i] ^ sbox[j]) % len(matrix[0])] += 1
-            # print(matrix)
     return matrix
+#***************************************************************************
 
+#***************************************************************************
+# Ausgabe der Matrix. Erste Zeile enthält die verschiedenen Sbox-Werte. Die 
+# Erste Spalte enthält die verschiedenen Werte, welche mit Hilfe der Sbox
+# abgebildet werden können.
 def printMatrix(matrix) :
     seperator = " "
-    # seperator ggf durch \t ersetzen.
+    
     Ausgabe = seperator + seperator
     for i in range(len(matrix[0])) :
         Ausgabe += str(i) + seperator
